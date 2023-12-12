@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--读取配置文件中的数据库连接信息-->
+    <properties resource="db.properties"/>
+    <settings>
+        <!--设置日志-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--开启驼峰命名，映射数据库到对象属性名-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--开启缓存-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!--给实体类取别名，为了后面配置mapper.xml时不用写全限定名，方便使用-->
+    <typeAliases>
+        <!--包扫描-->
+        <package name="xyz.shi.entity"/>
+    </typeAliases>
+
+    <environments default="development">
+        <!--id属性必须和上面的default一样  -->
+        <environment id="development">
+            <!--事务管理器
+                一、JDBC：这个配置直接简单使用了 JDBC 的提交和回滚设置。它依赖于从数据源得到的连接来管理事务范围
+                二、MANAGED：这个配置几乎没做什么。它从来不提交或回滚一个连接。而它会让容器来管理事务的整个生命周期
+                    比如 spring 或 JEE 应用服务器的上下文，默认情况下，它会关闭连接。然而一些容器并不希望这样，
+                    因此如果你需要从连接中停止它，就可以将 closeConnection 属性设置为 false，比如：
+                    <transactionManager type="MANAGED">
+                        <property name="closeConnection" value="false"/>
+                    </transactionManager>
+              -->
+            <transactionManager type="JDBC"/>
+            <!--dataSource 元素使用标准的 JDBC 数据源接口来配置 JDBC 连接对象源  -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${user}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!-- 注册userMapper.xml文件 -->
+        <mapper resource="UserMapper.xml"/>
+    </mappers>
+
+</configuration>

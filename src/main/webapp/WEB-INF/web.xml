@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <servlet>
+        <!--servlet命名-->
+        <servlet-name>MyServlet</servlet-name>
+        <!--servlet类的全限定名(路径+文件名)-->
+        <servlet-class>xyz.shi.servlet.MyServlet</servlet-class>
+    </servlet>
+    <!--定义Servlet的请求映射-->
+<!--    <servlet-mapping>-->
+<!--        &lt;!&ndash;要映射的servlet名，与上方定义的servlet-name一致&ndash;&gt;-->
+<!--        <servlet-name>MyServlet</servlet-name>-->
+<!--        &lt;!&ndash;请求映射url，必须以/开头&ndash;&gt;-->
+<!--        &lt;!&ndash;之后通过项目上下文路径+该路径，就能访问FirstServlet类&ndash;&gt;-->
+<!--        <url-pattern>/hello</url-pattern>-->
+<!--    </servlet-mapping>-->
+</web-app>
